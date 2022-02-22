@@ -3,7 +3,7 @@ import Route from "../models/Route";
 
 export default {
   Query: {
-    getRoutes: () => Route.find({}),
+    getRoutes: () => Route.find({}).sort({ createdAt: -1 }),
     getRoute: (_, { _id }) => Route.findById(_id),
     getGlossary: () =>
       Glossary.find({}).sort((a, b) => a.term.localCompare(b.term)),
