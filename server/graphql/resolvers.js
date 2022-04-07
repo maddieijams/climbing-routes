@@ -3,10 +3,19 @@ import Route from "../models/Route";
 
 export default {
   Query: {
-    getRoutes: () => Route.find({}).sort({ createdAt: -1 }),
-    getRoute: (_, { _id }) => Route.findById(_id),
+    getRoutes: () =>
+      Route.find({})
+        .then((data) => data)
+        .catch((err) => new Error(err)),
+    getRoute: (_, { _id }) =>
+      Route.findById(_id)
+        .then((data) => data)
+        .catch((err) => new Error(err)),
     getGlossary: () =>
-      Glossary.find({}).sort((a, b) => a.term.localCompare(b.term)),
+      Glossary.find({})
+        .then((data) => data)
+        .catch((err) => new Error(err)),
+    // .sort((a, b) => a.term.localCompare(b.term)),
   },
   Mutation: {
     updateRoute: (_, { _id, ...rest }) =>

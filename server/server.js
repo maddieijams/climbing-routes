@@ -85,4 +85,3 @@ app.listen(PORT, (err) => {
     console.log(`App is listening on port: ${PORT}`);
   }
 });
-// Middleware: GraphQL
